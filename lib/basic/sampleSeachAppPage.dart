@@ -20,10 +20,19 @@ class SampleSeachAppPage extends StatelessWidget {
         // Use builder only if you need to use library outside ScreenUtilInit context
         builder: (_, child) {
           return MaterialApp(
-            title: 'logger',
+            title: 'フォーム部品試し',
+            theme: ThemeData(
+              primarySwatch: Colors.blueGrey,
+            ),
             home: Scaffold(
               appBar: AppBar(
-                title: Text('フォームの部品試し'),
+                title: Text('フォームの部品試し',
+                  style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12.sp,
+                ),
+                ),
                 leadingWidth: 85.w,
                 leading: TextButton(
                   child: Text(
@@ -31,149 +40,28 @@ class SampleSeachAppPage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.sp,
+                      fontSize: 12.sp,
                     ),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
-              body: Center(
-                child: Column(
-                  children: <Widget>[
-                    Text('alertDialogの実装を試す\n(ダイアログ)\n',
-                      style: TextStyle(
-                          fontSize: 20.sp
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: (){
-                          logger.d("ボタン押されたので確認ダイアログを表示");
-                          //---
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text("タイトル"),
-                                content: Text("メッセージ内容"),
-                                actions: [
-                                  TextButton(
-                                    child: Text("Cancel"),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                  TextButton(
-                                    child: Text("OK"),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          //---
-                        },
-                        child: Text('確認ダイアログ１')),
-                    Text('↑AlertDialog　Android風\n',
-                      style: TextStyle(
-                          fontSize: 20.sp
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: (){
-                          logger.d("ボタン押されたので確認ダイアログを表示");
-                          //---
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return CupertinoAlertDialog(
-                                title: Text("タイトル"),
-                                content: Text("メッセージ内容"),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    child: Text('Cancel'),
-                                    isDestructiveAction: true,
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                  CupertinoDialogAction(
-                                    child: Text('OK'),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          //---
-                        },
-                        child: Text('確認ダイアログ２')),
-                    Text('↑CupertinoAlertDialog　ios風\n',
-                      style: TextStyle(
-                          fontSize: 20.sp
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: (){
-                          logger.d("ボタン押されたので確認ダイアログを表示");
-                          //---
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return SimpleDialog(
-                                title: Text("タイトル"),
-                                children: [
-                                  SimpleDialogOption(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text("選択肢1"),
-                                  ),
-                                  SimpleDialogOption(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text("選択肢2"),
-                                  ),
-                                  SimpleDialogOption(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text("選択肢3"),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          //---
-                        },
-                        child: Text('確認ダイアログ３')),
-                    Text('↑SimpleDialog 3つ以上選択肢可能\n',
-                      style: TextStyle(
-                          fontSize: 20.sp
-                      ),
-                    ),
-                    ElevatedButton(
-                        onPressed: (){
-                          logger.d("ボタン押されたので確認ダイアログを表示");
-                          //---
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return CupertinoAlertDialog(
-                                title: Text("タイトル"),
-                                content: Text("メッセージ内容"),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    child: Text('OK'),
-                                    onPressed: () => Navigator.pop(context),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          //---
-                        },
-                        child: Text('完了メッセージ１')),
-                    Text('↑選択肢を１つにして出す',
-                      style: TextStyle(
-                          fontSize: 20.sp
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                body: Card( //カードを配置
+                  elevation: 4.0, //かげの設定
+                  margin: const EdgeInsets.all(16.0),//全方向に空白
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      _titleArea(),
+                      _buttonArea(),
+                    ],
+                  ),
+                )
             ),
           );
         });
   }
+
+  _titleArea() {}
+  _buttonArea() {}
 }
